@@ -32,8 +32,8 @@
   <title>MiniRadio</title>
 
   <link rel="stylesheet" href="css/preloader.css">
-  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/index.js" defer></script>
 
@@ -69,6 +69,8 @@
         <div class="container__box">
           <div class="app">
             <div class="app__wrap">
+              <p class="app__description">Выбери радиосанцию</p>
+              <button class="btn__stop--radio button__play hide"></button>
               <div class="app__record"></div>
             </div>
           </div>
@@ -78,7 +80,65 @@
       </main>
       <!-- /.main -->
       <footer class="footer">
-        <img src="img/disco.gif" alt="танцы" class="footer__img">
+        <img src="img/disco.gif" alt="танцы" class="footer__img done hide">
+        <p class="footer__name done hide"></p>
+
+        <form action="#" class="form" id="form">
+          <fieldset class="form__fieldset">
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="newRadio"
+                data-radio-stantion="https://icecast-newradio.cdnvideo.ru/newradio3">
+              <label class="form__label--radio" for="newRadio">Новое радио</label>
+            </div>
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="recordRus"
+                data-radio-stantion="http://air.radiorecord.ru:8102/rus_320">
+              <label class="form__label--radio" for="recordRus">Record Rus</label>
+            </div>
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="90years"
+                data-radio-stantion="https://air.radiorecord.ru:805/sd90_320?411bddb9">
+              <label class="form__label--radio" for="90years">Радио 90-х</label>
+            </div>
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="slowRadio"
+                data-radio-stantion="http://air.radiorecord.ru:8102/mdl_320">
+              <label class="form__label--radio" for="slowRadio">Медляк FM</label>
+            </div>
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="marusyaRadio"
+                data-radio-stantion="https://radio-holding.ru:9433/marusya_default">
+              <label class="form__label--radio" for="marusyaRadio">Маруся FM</label>
+            </div>
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="roadRadio"
+                data-radio-stantion="http://dorognoe.hostingradio.ru:8000/dorognoe">
+              <label class=" form__label--radio" for="roadRadio">Дорожное</label>
+            </div>
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="rusRadio"
+                data-radio-stantion="https://rusradio.hostingradio.ru/rusradio96.aacp">
+              <label class="form__label--radio" for="rusRadio">Русское радио</label>
+            </div>
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="europaPlus"
+                data-radio-stantion="https://europaplus.hostingradio.ru:8014/europaplus320.mp3">
+              <label class="form__label--radio" for="europaPlus">Europa Plus</label>
+            </div>
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="retroFM"
+                data-radio-stantion="https://retro.hostingradio.ru:8014/retro320.mp3">
+              <label class="form__label--radio" for="retroFM">Ретро FM</label>
+            </div>
+            <div class="form__group">
+              <input class="form__input--radio" type="radio" name="radioStantion" id="Energy"
+                data-radio-stantion="http://ic4.101.ru:8000/region_energy_161">
+              <label class="form__label--radio" for="Energy">Energy</label>
+            </div>
+          </fieldset>
+        </form>
+        <!-- /form.form -->
+
       </footer>
       <!-- /.footer -->
     </div>
