@@ -1,3 +1,23 @@
+/* шрифты */
+
+@font-face 
+{
+  font-family: 'Open Sans';
+  src: url('../fonts/opensans-extrabold-webfont.woff2') format('woff2'),
+        url('../fonts/opensans-extrabold-webfont.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face 
+{
+  font-family: 'Open Sans';
+  src: url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+        url('../fonts/opensans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @font-face 
 {
   font-family: 'Playfair Display';
@@ -9,11 +29,21 @@
 
 /*--------- general ---------*/
 
+::-webkit-scrollbar { /* chrome based */
+  width: 0;  /* ширина scrollbar'a */
+  background: transparent;  /* опционально */
+}
+
+html  {
+  -ms-overflow-style: none;  /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
 body 
 {
   min-height: 100vh;
   background-color: #000000;
-	font-family: sans-serif;
+	font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.4;
@@ -74,15 +104,16 @@ img
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 600px;
+  max-width: 520px;
   min-width: 320px;
-  margin: 0 auto;
+  margin: 50px auto;
   position: relative;
 }
 
 .header 
 {
   width: 100%;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,25 +202,51 @@ img
 {
   height: 125px;
   width: 125px;
-  background: rgba(239, 237, 237, 0.8);
+  background: rgba(209, 187, 187, 0.8);
   border-radius: 50%;
   position: relative;
-  box-shadow: 0 0 10px 0 rgba(175, 42, 16, 0.9), 0 0 10px 0 rgba(175, 42, 16, 0.5) inset;
+  box-shadow: 0 0 10px 0 rgba(175, 42, 16, 0.5) inset;
   border: 2px solid #AF2A10;
   transition: .5s linear;
   cursor: pointer;
   transition: 1s linear;
 }
 
-.app__wrap:before 
+.button__play 
 {
-  content: '𝄞';
+  background: url(../img/play-button.png) no-repeat center;
+  background-size: cover;
+}
+
+.button__stop 
+{
+  background: url(../img/stop-button.png) no-repeat center;
+  background-size: cover;
+}
+
+.btn__stop--radio 
+{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 40px;
-  color:  #AF2A10;
+  width: 60px;
+  height: 60px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+
+.app__description
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: .875rem;
+  font-weight: 800;
+  color: #AF2A10;
 }
 
 .app__record  
@@ -200,12 +257,12 @@ img
   z-index: -1;
   border-radius: 100%;
   background: transparent;
-  margin: 12px;
+  margin: 11.5px;
   transition: 1s linear;
   box-shadow:
     0 8px 6px -8px rgba(21, 20, 20, 0.5),
     0 0 1px 1px rgba(21, 20, 20, 0.5),
-    0 0 0 2px rgb(255, 255, 255) inset,
+    0 0 0 1px rgb(180, 180, 180) inset,
     0 0 0 2px #1b1a1a inset,
     0 30px 0px -29px #444 inset,
     0 -30px 0px -29px #444 inset,
@@ -265,15 +322,125 @@ img
 .footer 
 {
   width: 100%;
+  height: 174px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px 0;
+  position: relative;
 }
 
-.footer__img {
-  width: 100px;
-  height: 100px;
+.footer__img 
+{
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 1s;
+}
+
+.footer__name 
+{
+  position: absolute;
+  top: 66%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.375rem;
+  transition: all 1s;
+}
+
+/* выбор радиостанции */
+.form 
+{
+  width: 300px;
+  height: 174px;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transition: all 1s;
+  position: relative;
+}
+
+.form__fieldset 
+{
+  width: 320px;
+  height: 100%;
+  padding: 20px;
+  margin-left: 20px;
+  border: none;
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.form__group 
+{
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.form__group:last-child 
+{
+  margin-bottom: 0px;
+}
+
+.form__input--radio 
+{
+  display: none;
+}
+
+.form__label--radio 
+{
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  padding-left: 12px;
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 1px 1px 3px #111, 
+    -1px 1px 3px #111, 
+    1px -1px 3px #111, 
+    -1px -1px 3px #111;
+  transition: all 0.6s;
+}
+
+.form__label--radio:hover {
+  color: #AF2A10;
+  transition: all 0.6s;
+}
+
+.form__label--radio:before 
+{
+  content: '';
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(175, 42, 16, 0.6);
+  margin-right: 20px;
+}
+
+.form__input--radio:checked + .form__label--radio:after 
+{
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 60%;
+  z-index: 1;
+  transform: translateY(-50%);
+  background: url("../img/disc.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 44px;
+  height: 44px;
 }
 
 .app__wrap--offset 
